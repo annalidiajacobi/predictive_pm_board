@@ -30,4 +30,4 @@ The application includes a simple prediction rule to suggest the next action on 
     * Otherwise, it returns `nil`.
 3.  The `app/views/projects/show.html.erb` view then displays the prediction within a styled `div` if the `@prediction` instance variable (set by the controller) is present (not `nil`).
 
-This simple rule provides a basic example of how a predictive system could be integrated into a project management tool to guide users on potential next steps.
+This simple rule provides a basic example of how a predictive system could be integrated into a project management tool to guide users on potential next steps.# predictive_pm_board
