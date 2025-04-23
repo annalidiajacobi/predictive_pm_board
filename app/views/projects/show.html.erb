@@ -1,0 +1,63 @@
+<h1><%= @project.name %></h1>
+<p><%= @project.description %></p>
+
+<% if @prediction.present? %>
+  <div style="margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+    <h3>Prediction:</h3>
+    <p><%= @prediction %></p>
+  </div>
+<% end %>
+
+<h2>Lists</h2>
+
+<div style="display: flex; flex-direction: row; gap: 20px; overflow-x: auto; padding-bottom: 20px;">
+  <% @lists.each do |list| %>
+    <div style="border: 1px solid #ccc; padding: 15px; min-width: 300px; border-radius: 5px;">
+      <h3><%= list.name %></h3>
+      <ul id="list_<%= list.id %>_tasks">
+        <% list.tasks.each do |task| %>
+          <%= render 'tasks/task', task: task %>
+        <% end %>
+      </ul>
+      <%= link_to 'Add Task', new_project_list_task_path(@project, list) %>
+      <div style="margin-top: 10px;">
+        <%= link_to 'Edit List', edit_project_list_path(@project, list), class: 'button' %>
+        <%= link_to 'Delete List', project_list_path(@project, list), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %>
+      </div>
+    </div>
+  <% end %>
+  <div>
+    <%= link_to 'Add New List', new_project_list_path(@project), class: 'button primary' %>
+  </div>
+</div>
+
+<br>
+<%= link_to 'Back to Projects', projects_path %>
+
+<style>
+  .button {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-right: 5px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 0.9em;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+
+  .button:hover {
+    background-color: #eee;
+  }
+
+  .button.primary {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+
+  .button.primary:hover {
+    background-color: #0056b3;
+  }
+</style>

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task: one
+  from_list: one
+  to_list: one
+
+two:
+  task: two
+  from_list: two
+  to_list: two
